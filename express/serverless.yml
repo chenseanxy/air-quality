@@ -16,6 +16,7 @@ inputs:
   serviceName: air_quality_gateway
   serviceId: service-0gxcokmg
   functionConf:
+    timeout: 15
     environment:
       variables:
         BAIDU_AK: ${env:BAIDU_AK}

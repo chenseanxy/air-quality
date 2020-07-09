@@ -6,4 +6,6 @@ function invalidProperties(obj) {
     return true;
 }
 
-module.exports = {invalidProperties}
+const apiRoot = process.env.VUE_APP_API_ROOT || ""
+
+module.exports = {invalidProperties, apiRoot}

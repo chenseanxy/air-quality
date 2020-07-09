@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {invalidProperties} from "../helpers"
+import {invalidProperties, apiRoot} from "../helpers"
 
 const state = {
     coords: {lat: 0, lot: 0},
@@ -45,7 +45,7 @@ const actions = {
     },
 
     async updateLoc({ state, commit }){
-        const resp = await axios.get('/geoToCity',
+        const resp = await axios.get(`${apiRoot}/geoToCity`,
             {params: {...state.coords}},
         )
 
