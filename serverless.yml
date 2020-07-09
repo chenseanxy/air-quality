@@ -1,17 +1,9 @@
 name: air-quality
 author: Chen Xinyang
-org: air-quality
-app: air-quality
+org: chenseanxy
 
 description: Simple air quality checker - A full stack serverless app
 keywords: serverless, express, website, fullstack
 repo: https://github.com/chenseanxy/air-quality
 readme: https://github.com/chenseanxy/air-quality/tree/master/README.md
 license: MIT
-src:
-  src: ./
-  exclude:
-    - .env
-    - serverless.yml
-    - '**/node_modules'
-    - '**/package-lock.json'
