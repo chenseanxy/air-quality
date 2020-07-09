@@ -1,0 +1,11 @@
+name: ${file(../serverless.yml):name}-vpc
+org: ${file(../serverless.yml):org}
+app: ${file(../serverless.yml):app}
+stage: ${opt:stage, 'dev'}
+component: vpc
+
+inputs:
+  region: ${env:REGION}
+  zone: ${env:ZONE}
+  vpcName: serverless
+  subnetName: serverless

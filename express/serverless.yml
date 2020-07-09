@@ -1,0 +1,18 @@
+name: ${file(../serverless.yml):name}-express
+org: ${file(../serverless.yml):org}
+app: ${file(../serverless.yml):app}
+stage: ${opt:stage, 'dev'}
+component: express
+
+inputs:
+  src:
+    src: ./
+    exclude:
+      - .env
+      - serverless.yml
+  region: ${env:REGION}
+  runtime: Nodejs10.15
+  apigatewayConf:
+    protocols:
+      - https
+    environment: release

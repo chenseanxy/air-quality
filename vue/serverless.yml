@@ -1,0 +1,19 @@
+name: ${file(../serverless.yml):name}-vue
+org: ${file(../serverless.yml):org}
+app: ${file(../serverless.yml):app}
+stage: ${opt:stage, 'dev'}
+component: website
+
+inputs:
+  src:
+    src: ./src
+    exclude:
+      - .env
+      - serverless.yml
+    dist: ./dist
+    hook: npm run build
+    index: index.html
+    error: index.html
+  region: ${env:REGION}
+  bucketName: ${env:BUCKET}
+  protocol: https
