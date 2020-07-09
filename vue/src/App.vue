@@ -1,28 +1,35 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="inspire">
+    <v-app-bar app color="blue-grey" dark>
+      <v-toolbar-title>Air Quality Checker</v-toolbar-title>
+    </v-app-bar>
+
+    <v-main>
+      <v-container class="fill-height" fluid>
+        <v-row align="center" justify="center">
+          <v-col class="text-center">
+            <GeoLocation />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+    <v-footer color="blue-grey" dark app>
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GeoLocation from "./components/GeoLocation.vue"
 
-export default {
-  name: 'App',
+export default{
+  name: 'app',
   components: {
-    HelloWorld
+    GeoLocation,
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
