@@ -1,6 +1,11 @@
 name: air-quality
 author: Chen Xinyang
 org: air-quality
+app: air-quality
+
+service: air-quality-svc
+provider: tencent
+
 description: Simple air quality checker - A full stack serverless app
 keywords: serverless, express, website, fullstack
 repo: https://github.com/chenseanxy/air-quality

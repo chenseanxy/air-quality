@@ -1,7 +1,7 @@
-name: ${file(../serverless.yml):name}-vpc
-org: ${file(../serverless.yml):org}
-app: ${file(../serverless.yml):app}
-stage: ${opt:stage, 'dev'}
+name: air-quality-vpc
+org: air-quality
+app: air-quality
+stage: dev
 component: vpc
 
 inputs:
