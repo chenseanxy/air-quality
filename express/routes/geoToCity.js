@@ -9,15 +9,15 @@ router.get('/', [
     query('lot').isFloat()
 ], async (req, res, next) => {
 
-    const lat = req.query.lat;
-    const lot = req.query.lot;
-    console.log({lat, lot})
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         const err = errors.array()[0];
         console.log(err);
         return res.status(422).json(err);
     }
+
+    const lat = req.query.lat;
+    const lot = req.query.lot;
 
     let baiduResp, hefengResp 
 
