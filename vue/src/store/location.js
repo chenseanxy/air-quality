@@ -3,7 +3,7 @@ import {invalidProperties, apiRoot} from "../helpers"
 
 const state = {
     coords: {lat: 0, lot: 0},
-    loc: {country: "", province: "", city: "", district:""},
+    loc: {country: "", province: "", city: "", district:"", id:""},
     validCoords: false,
     validLoc: false,
 };

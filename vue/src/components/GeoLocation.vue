@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <p>
     <v-icon v-on:click="locButton()">mdi-crosshairs-gps</v-icon>
     <span v-if="validLoc"> {{ loc.country }} - {{ loc.province }} - {{ loc.city }} - {{loc.district}}</span>
     <span v-else> Press to gather location data</span>
-  </div>
+  </p>
 </template>
 
 <script>
