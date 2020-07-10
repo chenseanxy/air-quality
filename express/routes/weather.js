@@ -7,7 +7,7 @@ const { addDocument, getCachedDocument } = require('../persistence');
 const { isEmpty } = require("../helpers");
 
 router.get('/current', [
-    query('locid').isFloat(),
+    query('locid').isAlphanumeric(),
 ], async (req, res, next) => {
 
     const errors = validationResult(req);
@@ -58,7 +58,7 @@ router.get('/current', [
 });
 
 router.get('/forecast', [
-    query('locid').isFloat(),
+    query('locid').isAlphanumeric(),
 ], async (req, res, next) => {
 
     const errors = validationResult(req);

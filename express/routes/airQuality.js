@@ -7,7 +7,7 @@ const { addDocument, getCachedDocument } = require('../persistence');
 const { isEmpty } = require('../helpers');
 
 router.get('/', [
-    query('locid').isFloat(),
+    query('locid').isAlphanumeric(),
 ], async (req, res, next) => {
 
     const errors = validationResult(req);
