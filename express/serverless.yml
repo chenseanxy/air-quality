@@ -21,6 +21,7 @@ inputs:
       variables:
         BAIDU_AK: ${env:BAIDU_AK}
         PORT: 80
+        HEFENG_KEY: ${env:HEFENG_KEY}
     vpcConfig:
       vpcId: ${output:${stage}:${app}:${app}-vpc.vpcId}
       subnetId: ${output:${stage}:${app}:${app}-vpc.subnetId}
