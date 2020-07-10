@@ -3,6 +3,8 @@ var router = express.Router();
 const { config } = require("../config");
 const { default: Axios } = require('axios');
 const { query, validationResult } = require('express-validator');
+const { addDocument, getCachedDocument } = require('../persistence');
+const { isEmpty } = require("../helpers");
 
 router.get('/current', [
     query('locid').isFloat(),
@@ -17,6 +19,17 @@ router.get('/current', [
 
     const { locid } = req.query;
     let resp;
+    let result;
+    
+    try{
+        result = await getCachedDocument('locid', locid, 'currentWx');
+        if (!isEmpty(result)){
+            res.status(200).json(result);
+            return;
+        }
+    } finally {
+        result = {}
+    }
 
     try{
         resp = await Axios.get(
@@ -34,13 +47,14 @@ router.get('/current', [
     }
 
     try{
-        const currentWx = resp.data.now;
-        res.status(200).json({locid, currentWx});
+        result = {locid, currentWx: resp.data.now};
+        res.status(200).json(result);
     } catch (err) {
         console.log(err);
         res.status(400).send(err.toString());
     }
 
+    addDocument(result, 'currentWx');
 });
 
 router.get('/forecast', [
@@ -56,6 +70,17 @@ router.get('/forecast', [
 
     const { locid } = req.query;
     let forecast;
+    let result;
+        
+    try{
+        result = await getCachedDocument('locid', locid, 'wxForecast');
+        if (!isEmpty(result)){
+            res.status(200).json(result);
+            return;
+        }
+    } finally {
+        result = {}
+    }
 
     try{
         forecast = await Axios.get(
@@ -78,12 +103,14 @@ router.get('/forecast', [
         for(const day of forecast.data.daily){
             wxForecast[day.fxDate] = day
         }
-        res.status(200).json({locid, wxForecast});
+        result = {locid, wxForecast}
+        res.status(200).json(result);
     } catch (err) {
         console.log(err);
         res.status(400).send(err.toString());
     }
 
+    addDocument(result, 'wxForecast');
 });
 
 module.exports = router;

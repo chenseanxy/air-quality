@@ -3,6 +3,8 @@ var router = express.Router();
 const { config } = require("../config");
 const { default: Axios } = require('axios');
 const { query, validationResult } = require('express-validator');
+const { addDocument, getCachedDocument } = require('../persistence');
+const { isEmpty } = require('../helpers');
 
 router.get('/', [
     query('locid').isFloat(),
@@ -17,6 +19,17 @@ router.get('/', [
 
     const { locid } = req.query;
     let resp;
+    let result;
+    
+    try{
+        result = await getCachedDocument('locid', locid, 'airQuality');
+        if (!isEmpty(result)){
+            res.status(200).json(result);
+            return;
+        }
+    } finally {
+        result = {}
+    }
 
     try{
         resp = await Axios.get(
@@ -34,13 +47,14 @@ router.get('/', [
     }
 
     try{
-        const airQuality = resp.data.now;
-        res.status(200).json({locid, airQuality});
+        result = {locid, airQuality: resp.data.now}
+        res.status(200).json(result);
     } catch (err) {
         console.log(err);
         res.status(400).send(err.toString());
     }
 
+    addDocument(result, 'airQuality')
 });
 
 module.exports = router;

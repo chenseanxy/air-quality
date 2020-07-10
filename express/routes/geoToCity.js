@@ -3,6 +3,7 @@ var router = express.Router();
 const { config } = require("../config");
 const { default: Axios } = require('axios');
 const { query, validationResult } = require('express-validator');
+const { addDocument } = require("../persistence");
 
 router.get('/', [
     query('lat').isFloat(),
@@ -19,7 +20,8 @@ router.get('/', [
     const lat = req.query.lat;
     const lot = req.query.lot;
 
-    let baiduResp, hefengResp 
+    let baiduResp, hefengResp;
+    let result;
 
     try{
         // Baidu Reverse Geo
@@ -51,13 +53,16 @@ router.get('/', [
             = baiduResp.data.result.addressComponent;
         const {id, tz} = hefengResp.data.location[0]
         const location = {country, province, city, district, id}
+        result = {location, lat, lot, tz};
 
-        res.status(200).json({location, lat, lot, tz});
+        res.status(200).json(result);
     } catch (error) {
         // Parsing error
         console.log(error);
         res.status(400).send(error.toString());
     }
+
+    addDocument(result, 'reverseGeo');
 
 });
 

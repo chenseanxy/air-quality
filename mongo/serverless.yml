@@ -1,0 +1,8 @@
+name: air-quality-mongo
+org: chenseanxy
+app: air-quality
+stage: dev
+component: mongodb
+
+inputs:
+  name: test

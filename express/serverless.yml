@@ -22,6 +22,12 @@ inputs:
         BAIDU_AK: ${env:BAIDU_AK}
         PORT: 80
         HEFENG_KEY: ${env:HEFENG_KEY}
+        MONGO_ENVIRONMENT: tcb
+        MONGO_TCB_ENVIRONMENT: ${output:${stage}:${app}:${app}-mongo.EnvId}
+        MONGO_TCB_ID: ${env:TENCENT_SECRET_ID}
+        MONGO_TCB_KEY: ${env:TENCENT_SECRET_KEY}
+        CACHING_ENABLED: "false"  # Set to false to reduce latency
+        PERSISTENCE_ENABLED: "false" # Backend & DB deployed into different regions
     vpcConfig:
       vpcId: ${output:${stage}:${app}:${app}-vpc.vpcId}
       subnetId: ${output:${stage}:${app}:${app}-vpc.subnetId}
