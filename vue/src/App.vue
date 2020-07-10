@@ -9,6 +9,7 @@
         <v-row align="center" justify="center">
           <v-col class="text-center">
             <GeoLocation />
+            <AQI />
           </v-col>
         </v-row>
       </v-container>
@@ -21,11 +22,13 @@
 
 <script>
 import GeoLocation from "./components/GeoLocation.vue"
+import AQI from "./components/AQI.vue"
 
 export default{
   name: 'app',
   components: {
     GeoLocation,
+    AQI,
   }
 }
 </script>

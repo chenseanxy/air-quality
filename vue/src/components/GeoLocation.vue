@@ -12,16 +12,17 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'GeoLocation',
   computed: mapGetters(['loc', 'validLoc']),
-  data() {
-    return {
-    }
-  },
+
   methods: {
-    locButton(){
-      this.$store.dispatch('updateCoords')
-        .catch(err => this.$dialog.notify.error(
+    async locButton(){
+      try{
+        await this.$store.dispatch('updateCoords');
+        await this.$store.dispatch('updateAirQuality');
+      } catch (err) {
+        this.$dialog.notify.error(
           err.toString(), {position: 'bottom-right'}
-        ));
+        );
+      }
     }
   }
 }
