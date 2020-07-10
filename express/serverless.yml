@@ -26,3 +26,4 @@ inputs:
       subnetId: ${output:${stage}:${app}:${app}-vpc.subnetId}
   apigatewayConf:
     isDisabled: true
+    enableCORS: true

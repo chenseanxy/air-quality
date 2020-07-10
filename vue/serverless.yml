@@ -16,4 +16,4 @@ inputs:
     error: index.html
   region: ${env:REGION}
   bucketName: ${env:BUCKET}
-  protocol: https
+  protocol: http
