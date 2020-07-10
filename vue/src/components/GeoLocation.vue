@@ -19,8 +19,9 @@ export default {
         await this.$store.dispatch('updateCoords');
         const airQuality = this.$store.dispatch('updateAirQuality');
         const currWx = this.$store.dispatch('updateCurrentWx');
+        const wxForecast = this.$store.dispatch('updateWxForecast');
 
-        await Promise.all([airQuality, currWx])
+        await Promise.all([airQuality, currWx, wxForecast])
       } catch (err) {
         this.$dialog.notify.error(
           err.toString(), {position: 'bottom-right'}

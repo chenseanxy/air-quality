@@ -23,12 +23,12 @@ const state = {
 };
 
 const getters = {
-    currentWx: state => state.currentWx
+    currentWx: state => state.currentWx,
+    validCurrentWx: state => state.validCurrentWx,
 };
 
 const actions = {
     async updateCurrentWx({commit, rootGetters}){
-        console.log(rootGetters.validLoc);
         if(!rootGetters.validLoc){
             throw Error("Please retry gathering location");
         }

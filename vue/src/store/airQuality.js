@@ -18,12 +18,12 @@ const state = {
 };
 
 const getters = {
-    airQuality: state => state.airQuality
+    airQuality: state => state.airQuality,
+    validAirQuality: state => state.validAirQuality,
 };
 
 const actions = {
     async updateAirQuality({commit, rootGetters}){
-        console.log(rootGetters.validLoc);
         if(!rootGetters.validLoc){
             throw Error("Please retry gathering location");
         }

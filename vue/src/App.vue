@@ -11,6 +11,7 @@
             <GeoLocation />
             <AQI />
             <CurrentWx />
+            <ForecastPannel />
           </v-col>
         </v-row>
       </v-container>
@@ -25,6 +26,7 @@
 import GeoLocation from "./components/GeoLocation.vue"
 import AQI from "./components/AQI.vue"
 import CurrentWx from "./components/CurrentWx.vue"
+import ForecastPannel from "./components/ForcastPannel.vue"
 
 export default{
   name: 'app',
@@ -32,6 +34,7 @@ export default{
     GeoLocation,
     AQI,
     CurrentWx,
+    ForecastPannel,
   }
 }
 </script>

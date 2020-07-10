@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="validAirQuality">
     <p>AQI - {{ airQuality.aqi }}</p>
     <p>AQI Level - {{ airQuality.category }}</p>
     <p>PM 2.5 - {{ airQuality.pm2p5 }} | PM 10 - {{airQuality.pm10}}</p>

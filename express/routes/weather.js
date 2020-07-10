@@ -74,7 +74,10 @@ router.get('/forecast', [
     }
 
     try{
-        const wxForecast = forecast.data.daily;
+        let wxForecast = {};
+        for(const day of forecast.data.daily){
+            wxForecast[day.fxDate] = day
+        }
         res.status(200).json({locid, wxForecast});
     } catch (err) {
         console.log(err);
