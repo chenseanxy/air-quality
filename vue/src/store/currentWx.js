@@ -3,21 +3,21 @@ import {invalidProperties, apiRoot} from "../helpers"
 
 const state = {
     "currentWx": {
-        "obsTime": "2020-07-10T16:20+08:00",
-        "temp": "31",
-        "feelsLike": "34",
-        "icon": "104",
-        "text": "Overcast",
-        "wind360": "176",
-        "windDir": "S",
-        "windScale": "2",
-        "windSpeed": "7",
-        "humidity": "69",
-        "precip": "0.0",
-        "pressure": "998",
-        "vis": "16",
-        "cloud": "99",
-        "dew": "20"
+        "obsTime": "",
+        "temp": "",
+        "feelsLike": "",
+        "icon": "",
+        "text": "",
+        "wind360": "",
+        "windDir": "",
+        "windScale": "",
+        "windSpeed": "",
+        "humidity": "",
+        "precip": "",
+        "pressure": "",
+        "vis": "",
+        "cloud": "",
+        "dew": ""
     },
     validCurrentWx: false,
 };

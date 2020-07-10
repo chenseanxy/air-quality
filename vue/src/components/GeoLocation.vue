@@ -17,7 +17,10 @@ export default {
     async locButton(){
       try{
         await this.$store.dispatch('updateCoords');
-        await this.$store.dispatch('updateAirQuality');
+        const airQuality = this.$store.dispatch('updateAirQuality');
+        const currWx = this.$store.dispatch('updateCurrentWx');
+
+        await Promise.all([airQuality, currWx])
       } catch (err) {
         this.$dialog.notify.error(
           err.toString(), {position: 'bottom-right'}
