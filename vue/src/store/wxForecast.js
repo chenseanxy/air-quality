@@ -22,7 +22,8 @@ const actions = {
         });
 
         if(invalidProperties(resp.data.wxForecast)){
-            throw Error("This operation has failed, please try again")
+            commit("resetWxForecast");
+            throw Error("Weather forecast is not available for this location")
         }
 
         commit('setWxForecast', resp.data.wxForecast);
@@ -33,6 +34,10 @@ const mutations = {
     setWxForecast: (state, wxForecast) => {
         state.wxForecast = wxForecast;
         state.validWxForecast = true;
+    },
+    resetWxForecast: (state) => {
+        state.wxForecast = {};
+        state.validWxForecast = false;
     }
 };
 

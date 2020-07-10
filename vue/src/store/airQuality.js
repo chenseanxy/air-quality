@@ -33,7 +33,8 @@ const actions = {
         });
 
         if(invalidProperties(resp.data.airQuality)){
-            throw Error("This operation has failed, please try again")
+            commit('resetAirQuality');
+            throw Error("Air quality data is not available for this location");
         }
 
         commit('setAirQuality', resp.data.airQuality);
@@ -44,6 +45,10 @@ const mutations = {
     setAirQuality: (state, airQuality) => {
         state.airQuality = airQuality;
         state.validAirQuality = true;
+    },
+    resetAirQuality: (state) => {
+        state.airQuality = {};
+        state.validAirQuality = false;
     }
 };
 

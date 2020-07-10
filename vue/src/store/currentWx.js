@@ -38,7 +38,8 @@ const actions = {
         });
 
         if(invalidProperties(resp.data.currentWx)){
-            throw Error("This operation has failed, please try again")
+            commit('resetCurrentWx');
+            throw Error("Current weather is not available for this location");
         }
 
         commit('setCurrentWx', resp.data.currentWx);
@@ -49,6 +50,10 @@ const mutations = {
     setCurrentWx: (state, currentWx) => {
         state.currentWx = currentWx;
         state.validCurrentWx = true;
+    },
+    resetCurrentWx: (state) => {
+        state.currentWx = {};
+        state.validCurrentWx = false;
     }
 };
 
