@@ -10,6 +10,7 @@
           <v-col class="text-center">
             <GeoLocation />
             <AQI />
+            <CurrentWx />
           </v-col>
         </v-row>
       </v-container>
@@ -23,12 +24,14 @@
 <script>
 import GeoLocation from "./components/GeoLocation.vue"
 import AQI from "./components/AQI.vue"
+import CurrentWx from "./components/CurrentWx.vue"
 
 export default{
   name: 'app',
   components: {
     GeoLocation,
     AQI,
+    CurrentWx,
   }
 }
 </script>

@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var geoToCityRouter = require('./routes/geoToCity');
 var airQualityRouter = require('./routes/airQuality');
+var weatherRouter = require('./routes/weather');
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/geoToCity', geoToCityRouter);
 app.use('/airQuality', airQualityRouter);
+app.use('/weather', weatherRouter);
 
 module.exports = app;
