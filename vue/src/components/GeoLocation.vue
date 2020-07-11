@@ -1,9 +1,11 @@
 <template>
-  <p>
-    <v-icon v-on:click="locButton()">mdi-crosshairs-gps</v-icon>
-    <span v-if="validLoc"> {{ loc.country }} - {{ loc.province }} - {{ loc.city }} - {{loc.district}}</span>
+  <v-chip :color="chipColor">
+    <v-avatar left>
+      <v-icon v-on:click="locButton()">mdi-crosshairs-gps</v-icon>
+    </v-avatar>
+    <span v-if="validLoc"> {{ locationText }}</span>
     <span v-else> Press to gather location data</span>
-  </p>
+  </v-chip>
 </template>
 
 <script>
@@ -11,7 +13,21 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'GeoLocation',
-  computed: mapGetters(['loc', 'validLoc']),
+  computed: {
+    ...mapGetters(['loc', 'validLoc']),
+    chipColor: function(){
+      if(this.validLoc) return 'default';
+      return 'secondary';
+    },
+    locationText: function(){
+      const {country, province, city, district} = this.loc;
+      var levels = [country, province, city, district];
+      var validLevels = levels.filter(function (el) {
+        return el != '';
+      });
+      return validLevels.join(' - ');
+    }
+  },
 
   methods: {
     async locButton(){

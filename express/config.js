@@ -16,7 +16,7 @@ const config = {
 
 function check_config() {
     for (const key in config) {
-        if (!config[key]) throw ReferenceError(
+        if (typeof config[key] == 'undefined') throw ReferenceError(
             `Config Value ${key} is not defined`
         )
     }
