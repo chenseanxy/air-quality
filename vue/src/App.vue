@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="air-quality">
     <v-app-bar app color="blue-grey" dark>
       <v-toolbar-title>Air Quality Checker</v-toolbar-title>
     </v-app-bar>
@@ -9,8 +9,18 @@
         <v-row align="center" justify="center">
           <v-col class="text-center">
             <GeoLocation />
+          </v-col>
+        </v-row>
+        <v-row align="center" justify="center">
+          <v-col class="text-center my-0 py-0">
             <AQI />
+          </v-col>
+
+          <v-col class="text-center my-0 py-0">
             <CurrentWx />
+          </v-col>
+
+          <v-col class="text-center my-0 py-0">          
             <ForecastPannel />
           </v-col>
         </v-row>

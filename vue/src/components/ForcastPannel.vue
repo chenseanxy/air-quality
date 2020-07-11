@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="300" class='mx-auto py-0 my-4' v-if="validWxForecast">
+  <v-card class='mx-auto py-0 my-4' max-width="315" min-width="315" v-if="validWxForecast">
     <v-expansion-panels accordion>
       <WxForecast 
         v-for="forecast in wxForecast" 

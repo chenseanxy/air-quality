@@ -1,5 +1,5 @@
 <template>
-  <v-card class='mx-auto py-0 my-4' max-width="300" v-if="valid">
+  <v-card class='mx-auto py-0 my-4' max-width="315" min-width="315" v-if="valid">
     <v-card-text>
       <v-list-item three-line>
         <v-list-item-content>
@@ -12,10 +12,16 @@
         </v-list-item-avatar>
       </v-list-item>
       <!-- <p class="text--primary display-1">{{ wx.text }} - {{ wx.temp }}°C</p> -->
-      <p class="text-left pl-4">
-        Wind: {{ wx.windSpeed }}km/h from {{ wx.wind360 }}° ({{ wx.windDir }})<br>
-        Humidity {{ wx.humidity }}%, Precipitation {{ wx.precip }} mm<br>
-        Visibility {{ wx.vis }}km, Cloud coverage {{ wx.cloud }}%<br>
+      <p class="mb-2">
+        Wind <v-icon size=18>mdi-weather-windy</v-icon> {{ wx.windSpeed }}km/h from {{ wx.wind360 }}° ({{ wx.windDir }})<br>
+      </p>
+      <p class="mb-2">
+        Humidity<v-icon size="18">mdi-water-outline</v-icon>{{ wx.humidity }}%, 
+        Precip. <v-icon size="18">mdi-weather-rainy</v-icon> {{ wx.precip }} mm
+      </p>
+      <p class="mb-2">
+        Visibility <v-icon size="18">mdi-eye-outline</v-icon> {{ wx.vis }}km, 
+        Cloud Covg. <v-icon size="18">mdi-cloud-outline</v-icon> {{ wx.cloud }}%<br>
       </p>
       <p>Observed on {{ lastUpdated.time }} ({{lastUpdated.age}})</p>
     </v-card-text>

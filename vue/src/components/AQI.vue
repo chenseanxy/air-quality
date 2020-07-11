@@ -1,5 +1,5 @@
 <template>
-  <v-card class='mx-auto py-0 my-4' max-width="300" v-if="validAirQuality">
+  <v-card class='mx-auto py-0 my-4' max-width="315" min-width="315" v-if="validAirQuality">
     <v-card-text>
       <v-container class="pa-0">
         <v-row>

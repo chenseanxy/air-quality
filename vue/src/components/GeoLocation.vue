@@ -1,7 +1,7 @@
 <template>
-  <v-chip :color="chipColor">
+  <v-chip v-ripple :color="chipColor" v-on:click="locButton()">
     <v-avatar left>
-      <v-icon v-on:click="locButton()">mdi-crosshairs-gps</v-icon>
+      <v-icon>mdi-crosshairs-gps</v-icon>
     </v-avatar>
     <span v-if="validLoc"> {{ locationText }}</span>
     <span v-else> Press to gather location data</span>
