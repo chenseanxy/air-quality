@@ -2,7 +2,7 @@ import axios from 'axios';
 import {invalidProperties, apiRoot} from "../helpers"
 
 const state = {
-    "wxForecast": {},
+    wxForecast: {},
     validWxForecast: false,
 };
 
