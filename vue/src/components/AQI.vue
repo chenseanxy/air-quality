@@ -38,12 +38,20 @@ import moment from "moment";
 
 export default {
   name: "AQI", 
+  data(){
+    return {
+      lastUpdated: "",
+    };
+  },
   computed: {
     ...mapGetters(['airQuality', 'validAirQuality']),
-    lastUpdated: function() {
-      return moment(this.airQuality.pubTime).fromNow();
-    }
-  }
+  },
+  mounted() {
+    setInterval(
+      () => this.lastUpdated = moment(this.airQuality.pubTime).fromNow(),
+      1000
+    )
+  },
 }
 </script>
 

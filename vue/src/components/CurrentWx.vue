@@ -34,12 +34,22 @@ import moment from "moment"
 
 export default {
   name: "CurrentWx",
+  data(){
+    return {
+      lastUpdated: {},
+    };
+  },
   computed: {
     ...mapGetters({wx: "currentWx", valid: "validCurrentWx"}),
-    lastUpdated: function() {
-      const mm = moment(this.wx.obsTime)
-      return {time: mm.format("LT"), age: mm.fromNow()}
-    }
+  },
+  mounted() {
+    setInterval(
+      () => {
+        const mm = moment(this.wx.obsTime);
+        this.lastUpdated = {time: mm.format("LT"), age: mm.fromNow()};
+      },
+      1000
+    )
   },
 }
 </script>
